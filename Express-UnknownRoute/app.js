@@ -4,27 +4,29 @@ const app = express();
 
 app.use(express.json());
 app.use((req,res,next)=>{
-    console.log("Server is up and running on port 3000! Ready to handle requests.");
+    console.log("Server is up and running on port 4000! Ready to handle requests.");
     next();
 });
 
 app.use('/products',(req,res,next)=>{
-    console.log("Here are the products.");
+    console.log("Here are the products.","It's used method is:",req.method);
     next();
 })
 
 app.use('/categories',(req,res,next)=>{
-    console.log("Here are the categories.");
+    console.log("Here are the categories.","It's used method is:",req.method);
     next();
 })
 
 app.get('/products',(req,res)=>{
     res.setHeader('Content-Type','text/html');
+    console.log("URL endpoint is:--", req.url);
     res.send('<h1>Here is the list of all products.</h1>');
 })
 
 app.get('/categories',(req,res)=>{
     res.setHeader('Content-Type','text/html');
+    console.log("URL endpoint is:--", req.url);
     res.send('<h1>Here is the list of all categories.</h1>');
 })
 
