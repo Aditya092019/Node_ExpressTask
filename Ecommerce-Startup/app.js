@@ -6,7 +6,7 @@ const productRouter = require('./routes/productRoutes');
 const cartRouter = require('./routes/cartRoutes');
 
 app.use('/users', userRouter);
-app.use('/products', productRouter);
+app.use('/api/products', productRouter);
 app.use('/cart', cartRouter);
 
 app.listen(5000, ()=>{
