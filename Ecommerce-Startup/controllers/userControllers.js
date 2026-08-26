@@ -5,7 +5,21 @@ const getAllUsers = (req,res)=>{
 }
 
 const addUsers = (req,res)=>{
-    res.send('Add a new user');
+    const {name, email} = req.body;
+    
+    if(!name || !email){
+        return res.status(400).json({
+            success: false,
+            message: "Name and Email are required"
+        })
+    }
+
+    const user = {id:1, name, email};
+    res.status(201).json({
+        success: true,
+        data: user
+    })
+    // res.send('Add a new user');
 }
 
 const getUsersByID = (req,res)=>{

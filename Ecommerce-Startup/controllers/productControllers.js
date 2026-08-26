@@ -6,8 +6,22 @@ const getProducts = (req,res)=>{
 }
 
 const postProducts = (req,res) =>{
-    const result = productService.addProduct();
-    res.send(result);
+
+    const {name, price} = req.body;
+    if(!name || !price){
+        return res.status(400).json({
+            success: false,
+            message: "Name and Price are required"
+        })
+    }
+
+    const product = {id:1,name,price};
+    res.status(201).json({
+        success: true,
+        data: product
+    })
+    // const result = productService.addProduct();
+    // res.send(result);
 }
 
 const getProductByID = (req,res) => {
